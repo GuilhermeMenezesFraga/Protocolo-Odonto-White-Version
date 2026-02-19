@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Protocolo Odonto | Engenharia de Aquisição Ética</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C5A059;
+            --gold-light: #DFBD7D;
+            --bg-primary: #FFFFFF;
+            --text-main: #0F172A;
+            --platinum: #F8FAFC;
+        }
+        
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #C5A059 0%, #DFBD7D 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Spotlight de Luxo - Não bloqueia cliques */
+        .luxury-spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 10;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(197, 160, 89, 0.05) 0%, transparent 50%);
+        }
+
+        .bg-gold-luxury {
+            background: linear-gradient(135deg, #C5A059 0%, #DFBD7D 100%);
+            box-shadow: 0 10px 40px -10px rgba(197, 160, 89, 0.4);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .bg-gold-luxury:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 50px -10px rgba(197, 160, 89, 0.6);
+        }
+
+        .bento-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.02);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .bento-card:hover {
+            border-color: var(--gold-light);
+            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 50px -15px rgba(0,0,0,0.05);
+        }
+
+        /* Animações de Revelação Corrigidas */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .img-zoom {
+            transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .img-zoom:hover {
+            transform: scale(1.08);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fdfdfd; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(197, 160, 89, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+        }
+        .pulse-gold { animation: pulse-gold 2s infinite; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.574.0",
+    "vite": "https://esm.sh/vite@^7.3.1"
+  }
+}
+</script>
+</head>
+<body>
+    <div class="luxury-spotlight"></div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+        document.addEventListener('mousemove', e => {
+            const spotlight = document.querySelector('.luxury-spotlight');
+            if (spotlight) {
+                spotlight.style.setProperty('--x', e.clientX + 'px');
+                spotlight.style.setProperty('--y', e.clientY + 'px');
+            }
+        });
+    </script>
+</body>
+</html>
